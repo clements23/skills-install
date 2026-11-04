@@ -11,6 +11,8 @@ npx -y github:clements23/skills-install owner/repo
 
 That is it. No config files, no manual path guessing, no per-agent install docs.
 
+If skills-install saves you time, [star the repo](https://github.com/clements23/skills-install/stargazers) so other agent users can find it.
+
 ## Why skills-install
 
 Every AI agent (Claude Code, Codex, Cursor, Gemini CLI) now supports skills, but every one of them stores them in a different place:
@@ -93,6 +95,14 @@ No. Existing skills are skipped unless you pass `--force`.
 
 **Can I publish my own skills?**
 Yes. Add a `SKILL.md` with `name` and `description` frontmatter to a GitHub repo, then anyone can install it with `skills-install yourname/yourrepo`.
+
+## For skill authors
+
+Add this badge to your skill repository so readers can install your skill in one command. The badge links back here, which helps both of us get discovered:
+
+```markdown
+[![skills-install](https://img.shields.io/badge/install%20with-skills--install-blue)](https://github.com/clements23/skills-install)
+```
 
 ## License
 

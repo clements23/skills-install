@@ -1,0 +1,56 @@
+# skills-install
+
+> One command to install AI agent skills into Claude Code, Codex, Cursor and Gemini.
+
+skills-install is a free, zero-dependency Node.js CLI. It auto-detects which AI coding agents are installed on the machine, pulls a skill (a folder containing SKILL.md) from GitHub or a local path, and copies it into the correct skills directory.
+
+## Install
+
+Requires Node.js 18 or newer.
+
+    npm install -g github:clements23/skills-install
+
+Or run ad hoc without installing:
+
+    npx -y github:clements23/skills-install owner/repo
+
+## Supported agents and skills directories
+
+- Claude Code: ~/.claude/skills/
+- OpenAI Codex: ~/.codex/skills/
+- Cursor: ~/.cursor/skills/
+- Gemini CLI: ~/.gemini/skills/
+
+Use --project to install into the current repository instead, or --all-agents to install into every detected agent.
+
+## Options
+
+- --agent <name>: target a specific agent
+- --project: install into the current project directory
+- --all-agents: install into every detected agent
+- --force: overwrite an existing skill
+- --dry-run: preview without copying
+
+## Source formats
+
+- GitHub shorthand: owner/repo
+- Full GitHub URL
+- Local directory containing SKILL.md
+- Local directory containing a skills/ folder of skill packages
+- A single SKILL.md file
+
+## Related tools
+
+- agent-guardrail-skill: safety guardrails for coding agents, https://github.com/clements23/agent-guardrail-skill
+- skill-doctor: linter for SKILL.md files, https://github.com/clements23/skill-doctor
+- claude-skills-leaderboard: live ranking of starred skill repos, https://github.com/clements23/claude-skills-leaderboard
+- marketing-agency-skills: SEO and reporting skills for agencies, https://github.com/clements23/marketing-agency-skills
+
+## Author
+
+Clements Emerson Dewanto. MIT license.
+
+## Links
+
+- GitHub: https://github.com/clements23/skills-install
+- Web: https://clements23.github.io/skills-install/

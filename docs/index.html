@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>skills-install: Install AI Agent Skills for Claude Code, Codex, Cursor and Gemini</title>
+  <meta name="description" content="skills-install is a free, zero-dependency CLI that installs any AI agent skill (SKILL.md) into Claude Code, Codex, Cursor or Gemini with one command. Auto-detects your agent and copies the skill into the right directory.">
+  <link rel="canonical" href="https://clements23.github.io/skills-install/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="skills-install: One Command to Install AI Agent Skills">
+  <meta property="og:description" content="Install any SKILL.md into Claude Code, Codex, Cursor or Gemini with one command. Free, open source, zero dependencies.">
+  <meta property="og:url" content="https://clements23.github.io/skills-install/">
+  <meta property="og:image" content="https://clements23.github.io/skills-install/preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="skills-install: One Command to Install AI Agent Skills">
+  <meta name="twitter:description" content="Install any SKILL.md into Claude Code, Codex, Cursor or Gemini with one command.">
+  <meta name="twitter:image" content="https://clements23.github.io/skills-install/preview.png">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <style>
+    :root { color-scheme: light dark; }
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0 1.25rem; color: #1f2328; background: #ffffff; }
+    @media (prefers-color-scheme: dark) { body { color: #e6edf3; background: #0d1117; } }
+    main { max-width: 820px; margin: 0 auto; padding: 3rem 0 4rem; }
+    h1 { font-size: 2rem; line-height: 1.25; margin-bottom: 0.5rem; }
+    h2 { margin-top: 2.5rem; font-size: 1.35rem; border-bottom: 1px solid rgba(127,127,127,0.3); padding-bottom: 0.4rem; }
+    .lead { font-size: 1.1rem; opacity: 0.85; }
+    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; background: rgba(127,127,127,0.15); border-radius: 6px; padding: 0.15em 0.4em; }
+    pre { padding: 1rem; overflow-x: auto; border: 1px solid rgba(127,127,127,0.25); }
+    pre code { background: none; padding: 0; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid rgba(127,127,127,0.35); padding: 0.55rem 0.75rem; text-align: left; }
+    th { background: rgba(127,127,127,0.12); }
+    a { color: #0969da; }
+    @media (prefers-color-scheme: dark) { a { color: #58a6ff; } }
+    .cta { display: inline-block; margin: 1.25rem 0; padding: 0.7rem 1.4rem; background: #1f6feb; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 600; }
+    .repo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.9rem; margin-top: 1rem; }
+    .repo-card { border: 1px solid rgba(127,127,127,0.35); border-radius: 10px; padding: 0.9rem 1rem; text-decoration: none; color: inherit; }
+    .repo-card:hover { border-color: #1f6feb; }
+    .repo-card strong { display: block; color: #0969da; }
+    @media (prefers-color-scheme: dark) { .repo-card strong { color: #58a6ff; } }
+    .repo-card span { font-size: 0.9rem; opacity: 0.8; }
+    footer { margin-top: 3rem; font-size: 0.85rem; opacity: 0.7; border-top: 1px solid rgba(127,127,127,0.3); padding-top: 1rem; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "skills-install",
+    "alternateName": "skills install CLI",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "macOS, Linux, Windows (requires Node.js 18+)",
+    "description": "Zero-dependency command line tool that installs AI agent skills (SKILL.md packages) into Claude Code, OpenAI Codex, Cursor and Gemini CLI with a single command.",
+    "url": "https://github.com/clements23/skills-install",
+    "downloadUrl": "https://github.com/clements23/skills-install",
+    "license": "https://opensource.org/licenses/MIT",
+    "isAccessibleForFree": true,
+    "author": { "@type": "Person", "name": "Clements Emerson Dewanto" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does skills-install do?",
+        "acceptedAnswer": { "@type": "Answer", "text": "skills-install installs any AI agent skill into Claude Code, Codex, Cursor or Gemini. It auto-detects which agents you have, pulls the skill from GitHub or a local folder, and copies it into the correct skills directory." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which AI agents are supported?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Claude Code (~/.claude/skills), OpenAI Codex (~/.codex/skills), Cursor (~/.cursor/skills) and Gemini CLI (~/.gemini/skills). The agent is auto-detected, or you can pass --agent explicitly." }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does skills-install cost?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Nothing. skills-install is free and open source under the MIT license, with zero npm dependencies." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to publish my skills to npm?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. skills-install reads any GitHub repository or local folder that contains a SKILL.md file, so your skill only needs to live in a git repo." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I install skills-install?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Run npx -y github:clements23/skills-install owner/repo, or install globally with npm install -g github:clements23/skills-install. Node.js 18 or newer is required." }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to install an AI agent skill with skills-install",
+    "description": "Install a SKILL.md skill into Claude Code, Codex, Cursor or Gemini in three steps.",
+    "totalTime": "PT1M",
+    "step": [
+      { "@type": "HowToStep", "name": "Open a terminal", "text": "Make sure Node.js 18 or newer is installed, verified with node --version." },
+      { "@type": "HowToStep", "name": "Run the installer", "text": "Run npx -y github:clements23/skills-install owner/repo where owner/repo is the GitHub repository containing the skill." },
+      { "@type": "HowToStep", "name": "Use the skill", "text": "Start your coding agent and ask it to use the skill. The skill now lives in the agent's skills directory." }
+    ]
+  }
+  </script>
+</head>
+<body>
+<main>
+  <h1>skills-install: install AI agent skills with one command</h1>
+  <p class="lead"><strong>skills-install</strong> is a free, zero-dependency CLI that installs any <strong>AI agent skill</strong> (a <code>SKILL.md</code> package) into <strong>Claude Code</strong>, <strong>OpenAI Codex</strong>, <strong>Cursor</strong> or <strong>Gemini CLI</strong>. It auto-detects your agent, clones the skill from GitHub or reads it from a local folder, and copies it into the correct skills directory.</p>
+
+  <pre><code>npx -y github:clements23/skills-install owner/repo</code></pre>
+
+  <a class="cta" href="https://github.com/clements23/skills-install">View on GitHub</a>
+
+  <h2>Why it exists</h2>
+  <p>Every major AI coding agent now supports skills, but each stores them in a different place. Skill authors publish one repo and users are left guessing four different install paths. skills-install replaces all of them with a single command.</p>
+
+  <table>
+    <thead><tr><th>Agent</th><th>Skills directory</th></tr></thead>
+    <tbody>
+      <tr><td>Claude Code</td><td><code>~/.claude/skills/</code></td></tr>
+      <tr><td>OpenAI Codex</td><td><code>~/.codex/skills/</code></td></tr>
+      <tr><td>Cursor</td><td><code>~/.cursor/skills/</code></td></tr>
+      <tr><td>Gemini CLI</td><td><code>~/.gemini/skills/</code></td></tr>
+    </tbody>
+  </table>
+
+  <h2>Usage</h2>
+  <pre><code># Install from a GitHub repository
+npx -y github:clements23/skills-install clements23/agent-guardrail-skill
+
+# Install from a local folder or a single SKILL.md
+npx -y github:clements23/skills-install ./my-skills
+
+# Pick the agent explicitly, install everywhere, or preview
+npx -y github:clements23/skills-install owner/repo --agent claude
+npx -y github:clements23/skills-install owner/repo --all-agents
+npx -y github:clements23/skills-install owner/repo --dry-run</code></pre>
+
+  <h2>How it works</h2>
+  <ol>
+    <li>Auto-detection checks for <code>~/.claude</code>, <code>~/.codex</code>, <code>~/.cursor</code> and <code>~/.gemini</code>.</li>
+    <li>The source is scanned for a root <code>SKILL.md</code>, a <code>skills/</code> folder of skill packages, or subfolders containing <code>SKILL.md</code>.</li>
+    <li>Each skill name is read from the <code>name:</code> frontmatter field and copied into the target agent's skills directory.</li>
+  </ol>
+
+  <h2>Related open source tools</h2>
+  <div class="repo-grid">
+    <a class="repo-card" href="https://github.com/clements23/agent-guardrail-skill"><strong>agent-guardrail-skill</strong><span>Safety guardrails that stop coding agents from running destructive commands.</span></a>
+    <a class="repo-card" href="https://github.com/clements23/skill-doctor"><strong>skill-doctor</strong><span>Linter that audits SKILL.md files for broken frontmatter and bloat.</span></a>
+    <a class="repo-card" href="https://github.com/clements23/claude-skills-leaderboard"><strong>claude-skills-leaderboard</strong><span>Live ranking of the most starred Claude skill repositories.</span></a>
+    <a class="repo-card" href="https://github.com/clements23/marketing-agency-skills"><strong>marketing-agency-skills</strong><span>SEO, reporting and ad analysis skills for marketing agencies.</span></a>
+  </div>
+
+  <h2>FAQ</h2>
+  <p><strong>What does skills-install do?</strong><br>It installs any AI agent skill into Claude Code, Codex, Cursor or Gemini with one command, auto-detecting the agent and copying the skill into the right directory.</p>
+  <p><strong>Which AI agents are supported?</strong><br>Claude Code, OpenAI Codex, Cursor and Gemini CLI, via home directory or project scoped installs.</p>
+  <p><strong>How much does it cost?</strong><br>Nothing. It is MIT licensed with zero npm dependencies.</p>
+  <p><strong>Do I need to publish skills to npm?</strong><br>No. Any GitHub repository or local folder containing a <code>SKILL.md</code> works.</p>
+  <p><strong>Is skills-install affiliated with Anthropic or OpenAI?</strong><br>No. It is an independent open source tool by Clements Emerson Dewanto.</p>
+
+  <footer>
+    MIT licensed by <a href="https://github.com/clements23">Clements Emerson Dewanto</a>. Source: <a href="https://github.com/clements23/skills-install">github.com/clements23/skills-install</a>.
+  </footer>
+</main>
+</body>
+</html>
