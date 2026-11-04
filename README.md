@@ -1,13 +1,12 @@
 # skills-install: One Command to Install AI Agent Skills for Claude Code, Codex, Cursor and Gemini
 
-[![npm](https://img.shields.io/npm/v/skills-install?color=blue&label=skills-install)](https://www.npmjs.com/package/skills-install)
-[![node](https://img.shields.io/node/v/skills-install)](https://nodejs.org)
+[![GitHub stars](https://img.shields.io/github/stars/clements23/skills-install?style=flat&label=stars)](https://github.com/clements23/skills-install/stargazers)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 `skills-install` is a zero-dependency CLI that installs [AI agent skills](https://github.com/clements23/agent-guardrail-skill) into any supported coding agent. It auto-detects which agent you use, pulls a skill from GitHub or your local filesystem, and drops it in the right skills directory.
 
 ```bash
-npx skills-install owner/repo
+npx -y github:clements23/skills-install owner/repo
 ```
 
 That is it. No config files, no manual path guessing, no per-agent install docs.
@@ -27,13 +26,17 @@ Skill authors publish one repo and users are left figuring out four different in
 
 ## Install
 
-Requires Node.js 18 or newer.
+Requires Node.js 18 or newer. No npm publish needed, it installs straight from GitHub:
 
 ```bash
-npm install -g skills-install
+npm install -g github:clements23/skills-install
 ```
 
-Or run it ad hoc with `npx skills-install` (no install needed).
+Or run it ad hoc with no install at all:
+
+```bash
+npx -y github:clements23/skills-install owner/repo
+```
 
 ## Usage
 
