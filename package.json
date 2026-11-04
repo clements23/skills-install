@@ -1,0 +1,36 @@
+{
+  "name": "skills-install",
+  "version": "1.0.0",
+  "description": "One command to install AI agent skills into Claude Code, Codex, Cursor and Gemini. Auto-detects your agent and installs any SKILL.md from GitHub or local paths.",
+  "type": "module",
+  "bin": {
+    "skills-install": "bin/skills-install.mjs"
+  },
+  "files": [
+    "bin"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini",
+    "ai-skills",
+    "agent-skills",
+    "skills",
+    "skill",
+    "claude",
+    "install",
+    "cli",
+    "llm",
+    "ai-agents"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clements23/skills-install.git"
+  },
+  "homepage": "https://github.com/clements23/skills-install#readme"
+}
